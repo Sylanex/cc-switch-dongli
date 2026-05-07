@@ -90,6 +90,25 @@ export const providerPresets: ProviderPreset[] = [
     iconColor: "#D4915D",
   },
   {
+    name: "DongLi AI",
+    websiteUrl: "https://ai.dongli.work",
+    apiKeyUrl: "https://ai.dongli.work",
+    settingsConfig: {
+      env: {
+        ANTHROPIC_BASE_URL: "https://ai.dongli.work",
+        ANTHROPIC_AUTH_TOKEN: "",
+        ANTHROPIC_MODEL: "claude-sonnet-4.6",
+        ANTHROPIC_DEFAULT_HAIKU_MODEL: "claude-haiku-4.5",
+        ANTHROPIC_DEFAULT_SONNET_MODEL: "claude-sonnet-4.6",
+        ANTHROPIC_DEFAULT_OPUS_MODEL: "claude-opus-4-7",
+      },
+    },
+    category: "aggregator",
+    isPartner: true,
+    apiFormat: "anthropic",
+    endpointCandidates: ["https://ai.dongli.work"],
+  },
+  {
     name: "Gemini Native",
     websiteUrl: "https://ai.google.dev/gemini-api",
     apiKeyUrl: "https://aistudio.google.com/app/apikey",

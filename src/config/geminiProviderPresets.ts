@@ -51,6 +51,40 @@ export const geminiProviderPresets: GeminiProviderPreset[] = [
     iconColor: "#4285F4",
   },
   {
+    name: "DongLi AI",
+    websiteUrl: "https://ai.dongli.work",
+    apiKeyUrl: "https://ai.dongli.work",
+    settingsConfig: {
+      env: {
+        GOOGLE_GEMINI_BASE_URL: "https://ai.dongli.work",
+        GEMINI_API_KEY: "",
+        GEMINI_MODEL: "gemini-3.1-pro",
+      },
+      config: {
+        general: {
+          previewFeatures: true,
+          sessionRetention: {
+            enabled: true,
+            maxAge: "30d",
+            warningAcknowledged: true,
+          },
+        },
+        mcpServers: {},
+        security: {
+          auth: {
+            selectedType: "gemini-api-key",
+          },
+        },
+      },
+    },
+    baseURL: "https://ai.dongli.work",
+    model: "gemini-3.1-pro",
+    description: "DongLi AI",
+    category: "aggregator",
+    isPartner: true,
+    endpointCandidates: ["https://ai.dongli.work"],
+  },
+  {
     name: "E-FlowCode",
     websiteUrl: "https://e-flowcode.cc",
     apiKeyUrl: "https://e-flowcode.cc",

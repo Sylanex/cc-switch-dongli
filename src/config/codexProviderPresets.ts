@@ -79,6 +79,20 @@ export const codexProviderPresets: CodexProviderPreset[] = [
     iconColor: "#00A67E",
   },
   {
+    name: "DongLi AI",
+    websiteUrl: "https://ai.dongli.work",
+    apiKeyUrl: "https://ai.dongli.work",
+    category: "aggregator",
+    isPartner: true,
+    auth: generateThirdPartyAuth(""),
+    config: generateThirdPartyConfig(
+      "dongli",
+      "https://ai.dongli.work/v1",
+      "gpt-5.4",
+    ),
+    endpointCandidates: ["https://ai.dongli.work/v1"],
+  },
+  {
     name: "Azure OpenAI",
     websiteUrl:
       "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/codex",
