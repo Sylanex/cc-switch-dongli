@@ -129,6 +129,42 @@ export interface HermesProviderSettingsConfig {
 
 export const hermesProviderPresets: HermesProviderPreset[] = [
   {
+    name: "DongLi AI",
+    websiteUrl: "https://ai.dongli.work",
+    apiKeyUrl: "https://ai.dongli.work",
+    settingsConfig: {
+      name: "dongli",
+      base_url: "https://ai.dongli.work",
+      api_key: "",
+      api_mode: "anthropic_messages",
+      models: [
+        {
+          id: "claude-opus-4-7",
+          name: "Claude Opus 4.7",
+          context_length: 1000000,
+        },
+        {
+          id: "claude-sonnet-4-6",
+          name: "Claude Sonnet 4.6",
+          context_length: 1000000,
+        },
+        {
+          id: "claude-haiku-4-5-20251001",
+          name: "Claude Haiku 4.5",
+          context_length: 200000,
+        },
+      ],
+    },
+    category: "third_party",
+    isPartner: true,
+    suggestedDefaults: {
+      model: {
+        default: "claude-sonnet-4-6",
+        provider: "dongli",
+      },
+    },
+  },
+  {
     name: "OpenRouter",
     nameKey: "providerForm.presets.openrouter",
     websiteUrl: "https://openrouter.ai",

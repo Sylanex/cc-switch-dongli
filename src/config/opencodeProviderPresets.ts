@@ -297,6 +297,33 @@ export function getPresetModelDefaults(
 
 export const opencodeProviderPresets: OpenCodeProviderPreset[] = [
   {
+    name: "DongLi AI",
+    websiteUrl: "https://ai.dongli.work",
+    apiKeyUrl: "https://ai.dongli.work",
+    settingsConfig: {
+      npm: "@ai-sdk/anthropic",
+      name: "DongLi AI",
+      options: {
+        baseURL: "https://ai.dongli.work",
+        apiKey: "",
+      },
+      models: {
+        "claude-opus-4-7": { name: "Claude Opus 4.7" },
+        "claude-sonnet-4-6": { name: "Claude Sonnet 4.6" },
+        "claude-haiku-4-5-20251001": { name: "Claude Haiku 4.5" },
+      },
+    },
+    category: "third_party",
+    isPartner: true,
+    templateValues: {
+      apiKey: {
+        label: "API Key",
+        placeholder: "",
+        editorValue: "",
+      },
+    },
+  },
+  {
     name: "DeepSeek",
     websiteUrl: "https://platform.deepseek.com",
     apiKeyUrl: "https://platform.deepseek.com/api_keys",

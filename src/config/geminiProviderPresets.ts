@@ -60,27 +60,11 @@ export const geminiProviderPresets: GeminiProviderPreset[] = [
         GEMINI_API_KEY: "",
         GEMINI_MODEL: "gemini-3.1-pro",
       },
-      config: {
-        general: {
-          previewFeatures: true,
-          sessionRetention: {
-            enabled: true,
-            maxAge: "30d",
-            warningAcknowledged: true,
-          },
-        },
-        mcpServers: {},
-        security: {
-          auth: {
-            selectedType: "gemini-api-key",
-          },
-        },
-      },
     },
     baseURL: "https://ai.dongli.work",
     model: "gemini-3.1-pro",
     description: "DongLi AI",
-    category: "aggregator",
+    category: "third_party",
     isPartner: true,
     endpointCandidates: ["https://ai.dongli.work"],
   },
