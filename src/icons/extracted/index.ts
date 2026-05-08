@@ -100,6 +100,7 @@ export const PICKER_ALLOWED_ICONS: readonly string[] = [
   "anthropic",
   "openai",
   "gemini",
+  "hermes",
 ];
 
 export const iconList = PICKER_ALLOWED_ICONS.filter(
