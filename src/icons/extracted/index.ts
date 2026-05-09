@@ -89,10 +89,23 @@ export const iconUrls: Record<string, string> = {
   shengsuanyun: _shengsuanyun,
 };
 
-export const iconList = [
-  ...Object.keys(icons),
-  ...Object.keys(iconUrls),
-].sort();
+/**
+ * Icons surfaced by the IconPicker. Restricted to the brands of the
+ * presets we ship (4 official providers + DongLi falls back to initials).
+ * Underlying `icons` / `iconUrls` dictionaries still hold every SVG so
+ * legacy provider entries that reference removed icon names would still
+ * render — we just don't offer them in the picker.
+ */
+export const PICKER_ALLOWED_ICONS: readonly string[] = [
+  "anthropic",
+  "openai",
+  "gemini",
+  "hermes",
+];
+
+export const iconList = PICKER_ALLOWED_ICONS.filter(
+  (name) => name in icons || name in iconUrls,
+).sort();
 
 export function getIcon(name: string): string {
   return icons[name.toLowerCase()] || "";

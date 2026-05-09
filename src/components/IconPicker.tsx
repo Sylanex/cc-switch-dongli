@@ -7,6 +7,8 @@ import { iconList } from "@/icons/extracted";
 import { searchIcons, getIconMetadata } from "@/icons/extracted/metadata";
 import { cn } from "@/lib/utils";
 
+const allowedIconSet = new Set(iconList);
+
 interface IconPickerProps {
   value?: string; // 当前选中的图标
   onValueChange: (icon: string) => void; // 选择回调
@@ -23,7 +25,7 @@ export const IconPicker: React.FC<IconPickerProps> = ({
   // 过滤图标列表
   const filteredIcons = useMemo(() => {
     if (!searchQuery) return iconList;
-    return searchIcons(searchQuery);
+    return searchIcons(searchQuery).filter((name) => allowedIconSet.has(name));
   }, [searchQuery]);
 
   return (
