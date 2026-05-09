@@ -86,6 +86,7 @@ export const openclawProviderPresets: OpenClawProviderPreset[] = [
     },
     category: "third_party",
     isPartner: true,
+    icon: "dongli",
     templateValues: {
       apiKey: {
         label: "API Key",

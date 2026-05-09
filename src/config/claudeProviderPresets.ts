@@ -105,6 +105,7 @@ export const providerPresets: ProviderPreset[] = [
     },
     category: "third_party",
     isPartner: true,
+    icon: "dongli",
     apiFormat: "anthropic",
     endpointCandidates: ["https://ai.dongli.work"],
   },

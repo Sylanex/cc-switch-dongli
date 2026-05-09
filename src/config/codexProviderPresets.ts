@@ -84,6 +84,7 @@ export const codexProviderPresets: CodexProviderPreset[] = [
     apiKeyUrl: "https://ai.dongli.work",
     category: "third_party",
     isPartner: true,
+    icon: "dongli",
     auth: generateThirdPartyAuth(""),
     config: generateThirdPartyConfig(
       "dongli",

@@ -66,6 +66,7 @@ export const geminiProviderPresets: GeminiProviderPreset[] = [
     description: "慧境冻梨AICode",
     category: "third_party",
     isPartner: true,
+    icon: "dongli",
     endpointCandidates: ["https://ai.dongli.work"],
   },
   {

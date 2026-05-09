@@ -157,6 +157,7 @@ export const hermesProviderPresets: HermesProviderPreset[] = [
     },
     category: "third_party",
     isPartner: true,
+    icon: "dongli",
     suggestedDefaults: {
       model: {
         default: "claude-sonnet-4-6",
