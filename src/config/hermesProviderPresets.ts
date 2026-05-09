@@ -129,7 +129,7 @@ export interface HermesProviderSettingsConfig {
 
 export const hermesProviderPresets: HermesProviderPreset[] = [
   {
-    name: "DongLi AI",
+    name: "慧境冻梨AICode",
     websiteUrl: "https://ai.dongli.work",
     apiKeyUrl: "https://ai.dongli.work",
     settingsConfig: {

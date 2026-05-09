@@ -79,7 +79,7 @@ export const codexProviderPresets: CodexProviderPreset[] = [
     iconColor: "#00A67E",
   },
   {
-    name: "DongLi AI",
+    name: "慧境冻梨AICode",
     websiteUrl: "https://ai.dongli.work",
     apiKeyUrl: "https://ai.dongli.work",
     category: "third_party",
