@@ -114,6 +114,13 @@ export const iconMetadata: Record<string, IconMetadata> = {
     keywords: [],
     defaultColor: "currentColor",
   },
+  dongli: {
+    name: "dongli",
+    displayName: "Dongli",
+    category: "ai-provider",
+    keywords: ["dongli", "ai", "code", "慧境冻梨"],
+    defaultColor: "currentColor",
+  },
   deepseek: {
     name: "deepseek",
     displayName: "DeepSeek",

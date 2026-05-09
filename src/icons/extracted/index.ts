@@ -2,6 +2,7 @@
 // Do not edit manually
 
 import _dds from "./dds.svg?url";
+import _dongli from "./dongli.png";
 import _eflowcode from "./eflowcode.png";
 import _hermes from "./hermes.png";
 import _lemondata from "./lemondata.png";
@@ -82,6 +83,7 @@ export const icons: Record<string, string> = {
 
 export const iconUrls: Record<string, string> = {
   dds: _dds,
+  dongli: _dongli,
   eflowcode: _eflowcode,
   hermes: _hermes,
   lemondata: _lemondata,
@@ -91,21 +93,22 @@ export const iconUrls: Record<string, string> = {
 
 /**
  * Icons surfaced by the IconPicker. Restricted to the brands of the
- * presets we ship (4 official providers + DongLi falls back to initials).
+ * presets we ship (4 official providers + DongLi).
  * Underlying `icons` / `iconUrls` dictionaries still hold every SVG so
  * legacy provider entries that reference removed icon names would still
  * render — we just don't offer them in the picker.
  */
 export const PICKER_ALLOWED_ICONS: readonly string[] = [
   "anthropic",
-  "openai",
   "gemini",
   "hermes",
+  "openai",
+  "dongli",
 ];
 
 export const iconList = PICKER_ALLOWED_ICONS.filter(
   (name) => name in icons || name in iconUrls,
-).sort();
+);
 
 export function getIcon(name: string): string {
   return icons[name.toLowerCase()] || "";

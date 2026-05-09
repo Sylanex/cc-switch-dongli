@@ -90,7 +90,7 @@ export const providerPresets: ProviderPreset[] = [
     iconColor: "#D4915D",
   },
   {
-    name: "DongLi AI",
+    name: "慧境冻梨AICode",
     websiteUrl: "https://ai.dongli.work",
     apiKeyUrl: "https://ai.dongli.work",
     settingsConfig: {
@@ -105,6 +105,8 @@ export const providerPresets: ProviderPreset[] = [
     },
     category: "third_party",
     isPartner: true,
+
+    icon: "dongli",
     apiFormat: "anthropic",
     endpointCandidates: ["https://ai.dongli.work"],
   },

@@ -51,7 +51,7 @@ export const geminiProviderPresets: GeminiProviderPreset[] = [
     iconColor: "#4285F4",
   },
   {
-    name: "DongLi AI",
+    name: "慧境冻梨AICode",
     websiteUrl: "https://ai.dongli.work",
     apiKeyUrl: "https://ai.dongli.work",
     settingsConfig: {
@@ -63,9 +63,10 @@ export const geminiProviderPresets: GeminiProviderPreset[] = [
     },
     baseURL: "https://ai.dongli.work",
     model: "gemini-3.1-pro",
-    description: "DongLi AI",
+    description: "慧境冻梨AICode",
     category: "third_party",
     isPartner: true,
+    icon: "dongli",
     endpointCandidates: ["https://ai.dongli.work"],
   },
   {
