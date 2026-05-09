@@ -100,15 +100,15 @@ export const iconUrls: Record<string, string> = {
  */
 export const PICKER_ALLOWED_ICONS: readonly string[] = [
   "anthropic",
-  "openai",
   "gemini",
   "hermes",
+  "openai",
   "dongli",
 ];
 
 export const iconList = PICKER_ALLOWED_ICONS.filter(
   (name) => name in icons || name in iconUrls,
-).sort();
+);
 
 export function getIcon(name: string): string {
   return icons[name.toLowerCase()] || "";
