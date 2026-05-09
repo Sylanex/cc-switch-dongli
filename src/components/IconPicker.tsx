@@ -5,9 +5,9 @@ import { Label } from "@/components/ui/label";
 import { ProviderIcon } from "./ProviderIcon";
 import { iconList } from "@/icons/extracted";
 import { searchIcons, getIconMetadata } from "@/icons/extracted/metadata";
+import { cn } from "@/lib/utils";
 
 const allowedIconSet = new Set(iconList);
-import { cn } from "@/lib/utils";
 
 interface IconPickerProps {
   value?: string; // 当前选中的图标
@@ -24,8 +24,8 @@ export const IconPicker: React.FC<IconPickerProps> = ({
 
   // 过滤图标列表
   const filteredIcons = useMemo(() => {
-    const base = !searchQuery ? iconList : searchIcons(searchQuery);
-    return base.filter((name) => allowedIconSet.has(name));
+    if (!searchQuery) return iconList;
+    return searchIcons(searchQuery).filter((name) => allowedIconSet.has(name));
   }, [searchQuery]);
 
   return (
