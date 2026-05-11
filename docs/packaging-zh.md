@@ -239,8 +239,8 @@ pnpm tauri signer generate -w ~/.tauri/dongli.key --ci
 ### 6.1 当前手动流程（我们现在用这个）
 
 ```bash
-# 1. 打 tag
-git tag v3.14.2-dongli && git push --tags
+# 1. 打 tag（必须 v + version 字段值，参见下方"tag 命名约定"）
+git tag v3.14.1-1 && git push --tags
 
 # 2. 本地构建
 TAURI_SIGNING_PRIVATE_KEY="$(cat ~/.tauri/dongli.key)" pnpm build
@@ -248,13 +248,21 @@ TAURI_SIGNING_PRIVATE_KEY="$(cat ~/.tauri/dongli.key)" pnpm build
 # 3. 手动写 latest.json（参见 §5.3 模板）
 
 # 4. 用 gh CLI 上传到 GitHub Release
-gh release create v3.14.2-dongli \
+gh release create v3.14.1-1 \
   src-tauri/target/release/bundle/dmg/*.dmg \
   src-tauri/target/release/bundle/macos/*.tar.gz \
   src-tauri/target/release/bundle/macos/*.tar.gz.sig \
   latest.json \
-  --title "v3.14.2-dongli" --notes "更新说明"
+  --title "v3.14.1-1 (DongLi fork)" --notes "更新说明"
 ```
+
+#### Tag 命名约定（重要）
+
+**Tag 名必须等于 `v` + 三个 version 字段的值**（`package.json` / `Cargo.toml` / `tauri.conf.json`）。当前是 `3.14.1-1`，所以 tag 用 `v3.14.1-1`。
+
+**原因**：[AboutSection.tsx](../src/components/settings/AboutSection.tsx) 里的"Release Notes"按钮是直接拼 `https://.../releases/tag/v${version}` 打开的。如果 tag 加了额外后缀（比如 `v3.14.1-dongli.1`），用户点按钮就 404。
+
+想让 release 在 GitHub 列表里更有辨识度，写在 release **title / notes 里**（如 `v3.14.1-1 (DongLi fork)`），不要动 tag 本身。
 
 > 这套适合短期发版稀疏的阶段。频率上来后改 CI 自动化（§7）。
 
