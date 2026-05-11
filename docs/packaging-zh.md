@@ -88,7 +88,9 @@ pnpm build
 
 ### 3.3 带签名的完整构建（出正式发布物）
 
-需要拿到私钥文件（参见 §4），然后：
+需要拿到私钥文件（参见 §4），然后**根据系统选对应命令**。
+
+#### macOS / Linux（bash / zsh）
 
 ```bash
 TAURI_SIGNING_PRIVATE_KEY="$(cat ~/.tauri/dongli.key)" \
@@ -96,7 +98,44 @@ TAURI_SIGNING_PRIVATE_KEY_PASSWORD="" \
 pnpm build
 ```
 
+#### Windows（PowerShell）
+
+```powershell
+$env:TAURI_SIGNING_PRIVATE_KEY = Get-Content $HOME\.tauri\dongli.key -Raw
+$env:TAURI_SIGNING_PRIVATE_KEY_PASSWORD = ""
+pnpm build
+```
+
 成功后 `.tar.gz` 旁边会多一个 `.tar.gz.sig`，自动更新就靠它。
+
+#### ⚠️ 三个常见坑
+
+1. **环境变量名必须带 `SIGNING_` 这一段**
+   - ✅ `TAURI_SIGNING_PRIVATE_KEY_PASSWORD`
+   - ❌ `TAURI_PRIVATE_KEY_PASSWORD`（少了 `SIGNING_`，会报"prompt for password"，部分 AI 工具会给错这个名字）
+
+2. **密码字段"必须设置为空字符串"，不能完全不设**
+   - 私钥确实没密码，但 Tauri 检测到 key 文件后**会去找这个环境变量**；没找到 → 弹交互式提示 → CI / 后台脚本卡死
+
+3. **看到 key 文件里 "encrypted secret key" 字样**不要慌
+   - rsign 工具**固定**用 "encrypted secret key" 作为文件头部注释，**即使密码为空也是这写法**
+   - 它说的是"文件结构是加密格式"，不是"你需要密码"
+   - 我们这把 `dongli.key` 真的没密码，传 `TAURI_SIGNING_PRIVATE_KEY_PASSWORD=""` 就能签
+
+#### 拿到 key 后先验完整性
+
+如果是同事通过网盘/微信传过来的，强烈建议先核对哈希避免传输损坏：
+
+```bash
+# macOS / Linux
+shasum -a 256 ~/.tauri/dongli.key
+# Windows PowerShell
+Get-FileHash $HOME\.tauri\dongli.key -Algorithm SHA256
+```
+
+当前这把 key 的参考值（联系密钥持有人核对）：
+- 文件大小：348 字节
+- `dongli.key.pub` 的内容跟 [`src-tauri/tauri.conf.json`](../src-tauri/tauri.conf.json) 里 `updater.pubkey` 应该 base64 解码后**一致**
 
 ### 3.4 构建耗时参考（Apple Silicon M-系列）
 
@@ -376,6 +415,15 @@ TAURI_SIGNING_PRIVATE_KEY="$(cat ~/.tauri/dongli.key)" pnpm build
 # 永久（写到 ~/.zshrc）：
 echo 'export TAURI_SIGNING_PRIVATE_KEY="$(cat ~/.tauri/dongli.key)"' >> ~/.zshrc
 ```
+
+### 构建：签名工具一直在提示密码
+
+两种可能：
+
+1. **环境变量名写错了**——必须是 `TAURI_SIGNING_PRIVATE_KEY_PASSWORD`，**不是** `TAURI_PRIVATE_KEY_PASSWORD`（少了 `SIGNING_`）
+2. **环境变量没设，工具走交互提示**——即使 key 真没密码，也得显式设 `TAURI_SIGNING_PRIVATE_KEY_PASSWORD=""`
+
+> 我们这把 `dongli.key` 文件头部写着 "rsign encrypted secret key"，**这是 rsign 的固定格式，不代表真有密码**。详见 §3.3 "三个常见坑"。
 
 ### 装：Mac 客户报"无法验证开发者"
 
