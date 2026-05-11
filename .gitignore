@@ -30,3 +30,7 @@ copilot-api
 CODEBUDDY.md
 .github
 latest.json
+
+# IDE 个人历史/索引（每人独立维护，不入版本控制）
+.specstory/
+.cursorindexingignore
