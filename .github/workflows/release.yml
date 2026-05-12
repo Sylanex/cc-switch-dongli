@@ -230,7 +230,10 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           name: "DongliAI-Switch ${{ github.ref_name }}"
-          prerelease: ${{ contains(github.ref_name, '-') }}
+          # `-N` is our build counter, not a SemVer prerelease — must stay false
+          # or GitHub's /releases/latest/ skips us and the Tauri updater breaks.
+          prerelease: false
+          make_latest: true
           body: |
             ## DongliAI-Switch ${{ github.ref_name }}
 
